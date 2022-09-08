@@ -1,4 +1,10 @@
 
+/**
+ * This module is a Typescript port of the official React tutorial
+ * (https://reactjs.org/tutorial/tutorial.html) - an implementation
+ * of the tic-tac-toe game.
+ */
+
 import React from 'react';
 import './App.css';
 
@@ -9,6 +15,11 @@ interface SquareProps {
   value: SquareValue;
 }
 
+/**
+ * React component representing each of the 9 squares in a tic-tac-toe board.
+ * @param props Component properties
+ * @returns React component
+ */
 function Square(props: SquareProps): JSX.Element {
   return (
     <button className="square" onClick={() => props.onClick()}>
@@ -22,7 +33,17 @@ interface BoardProps {
   squares: SquareValue[];
 }
 
+/**
+ * React component representing a tic-tac-toe game board composed of 9
+ * inner Square components.
+ */
 class Board extends React.Component<BoardProps> {
+
+  /**
+   * Render a Square component in position `i`.
+   * @param i Square number (0 to 8, total of 9 Squares)
+   * @returns Square component
+   */
   renderSquare(i: number): JSX.Element {
     return (
       <Square
@@ -32,6 +53,10 @@ class Board extends React.Component<BoardProps> {
     );
   }
 
+  /**
+   * Render this React component (Board)
+   * @returns React component
+   */
   render(): JSX.Element {
     return (
       <div>
@@ -65,6 +90,10 @@ interface GameState {
   xIsNext: boolean;
 }
 
+/**
+ * React component representing a tic-tac-toe game and containing the game's
+ * state and history. The render() method renders a Board component.
+ */
 class Game extends React.Component<{}, GameState> {
   constructor(props: {}) {
     super(props);
@@ -79,6 +108,11 @@ class Game extends React.Component<{}, GameState> {
     };
   }
 
+  /**
+   * onClick handler passed down to a Square component (HTML button).
+   * Update the Game's state and history, and possibly declare a winner.
+   * @param i Square index (0 to 8 - each of the 9 squares in a tic-tac-toe board)
+   */
   handleClick(i: number) {
     const history: GameStep[] = this.state.history.slice(0, this.state.stepNumber + 1);
     const current: GameStep = history[history.length - 1];
@@ -98,6 +132,11 @@ class Game extends React.Component<{}, GameState> {
     });
   }
 
+  /**
+   * Reset the Game's state to the given history step number. This method
+   * calls this.setState() that re-render()s by default, visually updating
+   * the Board component.
+   */
   jumpTo(step: number) {
     this.setState({
       stepNumber: step,
@@ -105,6 +144,10 @@ class Game extends React.Component<{}, GameState> {
     });
   }
 
+  /**
+   * Render this React component (Game) including a Board component.
+   * @returns React component
+   */
   render(): JSX.Element {
     const history: GameStep[] = this.state.history;
     const current: GameStep = history[this.state.stepNumber];
@@ -145,6 +188,14 @@ class Game extends React.Component<{}, GameState> {
   }
 }
 
+/**
+ * Given a tic-tac-toe board state (the values of each of the board's 9 squares),
+ * determine whether the winner is player 'X', 'O' or neither.
+ *
+ * @param squares An array of 9 tic-tac-toe board square values: 'X', 'O', null
+ * @returns The string 'X' or 'O' representing the winner, or null in case there
+ * is not a winner.
+ */
 function calculateWinner(squares: SquareValue[]): SquareValue {
   const lines = [
     [0, 1, 2],
