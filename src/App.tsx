@@ -8,7 +8,7 @@
 import React from 'react';
 import './App.css';
 
-type SquareValue = 'X' | 'O' | null;
+export type SquareValue = 'X' | 'O' | null;
 
 interface SquareProps {
   onClick: () => void;
@@ -188,7 +188,7 @@ class Game extends React.Component<{}, GameState> {
  * @returns The string 'X' or 'O' representing the winner, or null in case there
  * is not a winner.
  */
-function calculateWinner(squares: SquareValue[]): SquareValue {
+export function calculateWinner(squares: SquareValue[]): SquareValue {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
