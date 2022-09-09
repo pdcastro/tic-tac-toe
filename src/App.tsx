@@ -35,7 +35,7 @@ interface BoardProps {
 
 /**
  * React component representing a tic-tac-toe game board composed of 9
- * inner Square components.
+ * inner Square components arranged in a 3x3 matrix.
  */
 class Board extends React.Component<BoardProps> {
 
@@ -98,11 +98,7 @@ class Game extends React.Component<{}, GameState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      history: [
-        {
-          squares: Array(9).fill(null)
-        }
-      ],
+      history: [{ squares: Array(9).fill(null) }],
       stepNumber: 0,
       xIsNext: true
     };
@@ -122,11 +118,7 @@ class Game extends React.Component<{}, GameState> {
     }
     squares[i] = this.state.xIsNext ? "X" : "O";
     this.setState({
-      history: history.concat([
-        {
-          squares: squares
-        }
-      ]),
+      history: history.concat([{ squares }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
     });
