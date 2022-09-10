@@ -1,0 +1,15 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tictactoe-prod-211040-authRole",
+      "UnauthRoleArn": "arn:aws:iam::962755528734:role/amplify-tictactoe-prod-211040-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::962755528734:role/amplify-tictactoe-prod-211040-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-tictactoe-prod-211040-deployment",
+      "UnauthRoleName": "amplify-tictactoe-prod-211040-unauthRole",
+      "StackName": "amplify-tictactoe-prod-211040",
+      "StackId": "arn:aws:cloudformation:eu-west-2:962755528734:stack/amplify-tictactoe-prod-211040/f8766ae0-378d-11ed-9201-066304a4dc12",
+      "AmplifyAppId": "dbth78vqsy1jb"
+    }
+  }
+}
